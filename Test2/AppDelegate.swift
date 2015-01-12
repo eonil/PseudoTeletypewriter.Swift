@@ -21,6 +21,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		println(pty.masterFileHandle.readDataToEndOfFile().toString())
 		pty.waitUntilChildProcessFinishes()
 		
+		NSApplication.sharedApplication().terminate(self)
+		
 	}
 
 	func applicationWillTerminate(aNotification: NSNotification) {
