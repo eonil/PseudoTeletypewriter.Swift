@@ -504,6 +504,7 @@
 				45CBA4171A63FD21007A377E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		45CBA4441A63FD78007A377E /* Build configuration list for PBXNativeTarget "Test2" */ = {
 			isa = XCConfigurationList;
@@ -512,6 +513,7 @@
 				45CBA4461A63FD78007A377E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
