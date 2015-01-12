@@ -21,6 +21,26 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		println(pty.masterFileHandle.readDataToEndOfFile().toString())
 		pty.waitUntilChildProcessFinishes()
 		
+		
+//		let	pty	=	PseudoTeletypewriter(path: "/bin/bash", arguments: ["/bin/bash"], environment: ["TERM=ansi"])!
+////		pty.masterFileHandle.writeData("ls -Gbla\n".dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)!)
+////		println(pty.masterFileHandle.availableData.toString())
+//		
+//		sleep(1)
+//		println(pty.masterFileHandle.availableData.toString())
+//		pty.masterFileHandle.writeData("sudo /bin/ls\n".dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)!)		///	`sudo` also works.
+//		
+//		sleep(2)
+//		println(pty.masterFileHandle.availableData.toString())
+//		pty.masterFileHandle.writeData("<type your root password here to test pty>\n".dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)!)
+//		
+//		sleep(1)
+//		println(pty.masterFileHandle.availableData.toString())
+//		pty.masterFileHandle.writeData("exit\n".dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)!)
+//		
+//		println(pty.masterFileHandle.readDataToEndOfFile().toString())
+//		pty.waitUntilChildProcessFinishes()
+		
 		NSApplication.sharedApplication().terminate(self)
 		
 	}

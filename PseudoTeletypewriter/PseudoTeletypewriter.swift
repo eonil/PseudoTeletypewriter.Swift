@@ -47,7 +47,7 @@ public class PseudoTeletypewriter {
 				self._childProcessID	=	r.result.processID
 			} else {
 				debugLog("child: ok")
-				execute("/bin/ls", arguments, environment)
+				execute(path, arguments, environment)
 				fatalError("Returning from `execute` means the command was failed. This is unrecoverable error in child process side, so just abort the execution.")
 			}
 		} else {

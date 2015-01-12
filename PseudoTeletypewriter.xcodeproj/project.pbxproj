@@ -47,8 +47,6 @@
 		45CBA4311A63FD77007A377E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		45CBA4331A63FD77007A377E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		45CBA4361A63FD77007A377E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		45CBA4411A63FD78007A377E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		45CBA4421A63FD78007A377E /* Test2Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test2Tests.swift; sourceTree = "<group>"; };
 		45CBA44D1A63FE3C007A377E /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		45CBA44F1A63FE48007A377E /* LICENSE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -83,7 +81,6 @@
 				45CBA4031A63FD21007A377E /* PseudoTeletypewriter */,
 				45CBA4101A63FD21007A377E /* PseudoTeletypewriterTests */,
 				45CBA42E1A63FD77007A377E /* Test2 */,
-				45CBA43F1A63FD78007A377E /* Test2Tests */,
 				453686641A63B905000754F3 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -156,23 +153,6 @@
 			isa = PBXGroup;
 			children = (
 				45CBA4301A63FD77007A377E /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		45CBA43F1A63FD78007A377E /* Test2Tests */ = {
-			isa = PBXGroup;
-			children = (
-				45CBA4421A63FD78007A377E /* Test2Tests.swift */,
-				45CBA4401A63FD78007A377E /* Supporting Files */,
-			);
-			path = Test2Tests;
-			sourceTree = "<group>";
-		};
-		45CBA4401A63FD78007A377E /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				45CBA4411A63FD78007A377E /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
