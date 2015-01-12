@@ -27,6 +27,11 @@ This gives me this output.
 
 You can check the ANSI escape color code. It is working as interactive pseudo terminal.
 
+`sudo` also works. Though I haven't tested yet, but I believe `ssh` also should work.
+
+
+
+
 
 License
 -------
