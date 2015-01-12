@@ -7,6 +7,8 @@ Simple `pty` on Swift.
 
 Here's quick example.
 
+````Swift
+
 	let	pty	=	PseudoTeletypewriter(path: "/bin/ls", arguments: ["/bin/ls", "-Gbla"], environment: ["TERM=ansi"])!
 	println(pty.masterFileHandle.readDataToEndOfFile().toString())
 	pty.waitUntilChildProcessFinishes()
