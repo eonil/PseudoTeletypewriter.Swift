@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0610"
+   LastUpgradeVersion = "0630"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,24 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "4536868F1A63E910000754F3"
-               BuildableName = "BSD.framework"
-               BlueprintName = "BSD"
-               ReferencedContainer = "container:BSD.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "4536869A1A63E910000754F3"
-               BuildableName = "BSDTests.xctest"
-               BlueprintName = "BSDTests"
-               ReferencedContainer = "container:BSD.xcodeproj">
+               BlueprintIdentifier = "45CBA4011A63FD21007A377E"
+               BuildableName = "PseudoTeletypewriter.framework"
+               BlueprintName = "PseudoTeletypewriter"
+               ReferencedContainer = "container:PseudoTeletypewriter.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -42,26 +28,7 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       buildConfiguration = "Debug">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "4536869A1A63E910000754F3"
-               BuildableName = "BSDTests.xctest"
-               BlueprintName = "BSDTests"
-               ReferencedContainer = "container:BSD.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "4536868F1A63E910000754F3"
-            BuildableName = "BSD.framework"
-            BlueprintName = "BSD"
-            ReferencedContainer = "container:BSD.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
    </TestAction>
    <LaunchAction
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
@@ -75,10 +42,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "4536868F1A63E910000754F3"
-            BuildableName = "BSD.framework"
-            BlueprintName = "BSD"
-            ReferencedContainer = "container:BSD.xcodeproj">
+            BlueprintIdentifier = "45CBA4011A63FD21007A377E"
+            BuildableName = "PseudoTeletypewriter.framework"
+            BlueprintName = "PseudoTeletypewriter"
+            ReferencedContainer = "container:PseudoTeletypewriter.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -93,10 +60,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "4536868F1A63E910000754F3"
-            BuildableName = "BSD.framework"
-            BlueprintName = "BSD"
-            ReferencedContainer = "container:BSD.xcodeproj">
+            BlueprintIdentifier = "45CBA4011A63FD21007A377E"
+            BuildableName = "PseudoTeletypewriter.framework"
+            BlueprintName = "PseudoTeletypewriter"
+            ReferencedContainer = "container:PseudoTeletypewriter.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>

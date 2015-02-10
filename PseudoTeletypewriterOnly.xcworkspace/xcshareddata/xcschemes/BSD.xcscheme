@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "45CBA42C1A63FD77007A377E"
-               BuildableName = "Test2.app"
-               BlueprintName = "Test2"
-               ReferencedContainer = "container:PseudoTeletypewriter.xcodeproj">
+               BlueprintIdentifier = "4536868F1A63E910000754F3"
+               BuildableName = "BSD.framework"
+               BlueprintName = "BSD"
+               ReferencedContainer = "container:BSD/BSD.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -28,10 +28,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "45CBA43B1A63FD78007A377E"
-               BuildableName = "Test2Tests.xctest"
-               BlueprintName = "Test2Tests"
-               ReferencedContainer = "container:PseudoTeletypewriter.xcodeproj">
+               BlueprintIdentifier = "4536869A1A63E910000754F3"
+               BuildableName = "BSDTests.xctest"
+               BlueprintName = "BSDTests"
+               ReferencedContainer = "container:BSD/BSD.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -46,20 +46,20 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "45CBA43B1A63FD78007A377E"
-               BuildableName = "Test2Tests.xctest"
-               BlueprintName = "Test2Tests"
-               ReferencedContainer = "container:PseudoTeletypewriter.xcodeproj">
+               BlueprintIdentifier = "4536869A1A63E910000754F3"
+               BuildableName = "BSDTests.xctest"
+               BlueprintName = "BSDTests"
+               ReferencedContainer = "container:BSD/BSD.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "45CBA42C1A63FD77007A377E"
-            BuildableName = "Test2.app"
-            BlueprintName = "Test2"
-            ReferencedContainer = "container:PseudoTeletypewriter.xcodeproj">
+            BlueprintIdentifier = "4536868F1A63E910000754F3"
+            BuildableName = "BSD.framework"
+            BlueprintName = "BSD"
+            ReferencedContainer = "container:BSD/BSD.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -72,15 +72,15 @@
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable>
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "45CBA42C1A63FD77007A377E"
-            BuildableName = "Test2.app"
-            BlueprintName = "Test2"
-            ReferencedContainer = "container:PseudoTeletypewriter.xcodeproj">
+            BlueprintIdentifier = "4536868F1A63E910000754F3"
+            BuildableName = "BSD.framework"
+            BlueprintName = "BSD"
+            ReferencedContainer = "container:BSD/BSD.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -90,15 +90,15 @@
       useCustomWorkingDirectory = "NO"
       buildConfiguration = "Release"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable>
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "45CBA42C1A63FD77007A377E"
-            BuildableName = "Test2.app"
-            BlueprintName = "Test2"
-            ReferencedContainer = "container:PseudoTeletypewriter.xcodeproj">
+            BlueprintIdentifier = "4536868F1A63E910000754F3"
+            BuildableName = "BSD.framework"
+            BlueprintName = "BSD"
+            ReferencedContainer = "container:BSD/BSD.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
