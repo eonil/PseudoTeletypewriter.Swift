@@ -33,6 +33,20 @@ You can check the ANSI escape color code. It is working as interactive pseudo te
 
 
 
+
+
+
+
+
+
+Requirements
+------------
+-	Swift 1.2
+
+
+
+
+
 License
 -------
 This project is licensed under MIT license.
