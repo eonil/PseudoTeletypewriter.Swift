@@ -66,7 +66,7 @@ public func forkPseudoTeletypewriter() -> (result:ForkResult, master:FileDescrip
 ///	Does not return on success.
 ///	Returns on any error.
 ///	https://developer.apple.com/library/mac/documentation/Darwin/Reference/ManPages/man3/exec.3.html
-public func execute(path:String, arguments:[String], environment:[String]) {
+public func execute(path:String, _ arguments:[String], _ environment:[String]) {
 	path.withCString { (pathP:UnsafePointer<Int8>) -> () in
 		withCPointerToNullTerminatingCArrayOfCStrings(arguments, { (argP:UnsafePointer<UnsafeMutablePointer<Int8>>) -> () in
 			withCPointerToNullTerminatingCArrayOfCStrings(environment, { (envP:UnsafePointer<UnsafeMutablePointer<Int8>>) -> () in
@@ -101,7 +101,7 @@ public func execute(path:String, arguments:[String], environment:[String]) {
 
 ///	Generates proper pointer arrays for `exec~` family calls.
 ///	Terminatin `NULL` is required for `exec~` family calls.
-private func withCPointerToNullTerminatingCArrayOfCStrings(strings:[String], block:(UnsafePointer<UnsafeMutablePointer<Int8>>)->()) {
+private func withCPointerToNullTerminatingCArrayOfCStrings(strings:[String], _ block:(UnsafePointer<UnsafeMutablePointer<Int8>>)->()) {
 	///	Keep this in memory until the `block` to be finished.
 	let	a	=	strings.map { (s:String) -> NSMutableData in
 		let	b	=	s.cStringUsingEncoding(NSUTF8StringEncoding)!

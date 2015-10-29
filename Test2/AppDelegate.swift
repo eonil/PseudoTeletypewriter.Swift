@@ -18,7 +18,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 	func applicationDidFinishLaunching(aNotification: NSNotification) {
 		
 		let	pty	=	PseudoTeletypewriter(path: "/bin/ls", arguments: ["/bin/ls", "-Gbla"], environment: ["TERM=ansi"])!
-		println(pty.masterFileHandle.readDataToEndOfFile().toString())
+		print(pty.masterFileHandle.readDataToEndOfFile().toString())
 		pty.waitUntilChildProcessFinishes()
 		
 		
@@ -73,7 +73,7 @@ extension NSData {
 		return	bs
 	}
 	func toString() -> String {
-		return	NSString(data: self, encoding: NSUTF8StringEncoding)! as! String
+		return	NSString(data: self, encoding: NSUTF8StringEncoding)! as String
 	}
 	class func fromUInt8Array(bs:[UInt8]) -> NSData {
 		var	r	=	nil as NSData?
