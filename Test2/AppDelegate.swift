@@ -17,29 +17,29 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
 	func applicationDidFinishLaunching(_ aNotification: Notification) {
 		
-		let	pty	=	PseudoTeletypewriter(path: "/bin/ls", arguments: ["/bin/ls", "-Gbla"], environment: ["TERM=ansi"])!
-		print(pty.masterFileHandle.readDataToEndOfFile().toString())
-		pty.waitUntilChildProcessFinishes()
+		let	pty1	=	PseudoTeletypewriter(path: "/bin/ls", arguments: ["/bin/ls", "-Gbla"], environment: ["TERM=ansi"])!
+		print(pty1.masterFileHandle.readDataToEndOfFile().toString())
+		pty1.waitUntilChildProcessFinishes()
 		
 		
-//		let	pty	=	PseudoTeletypewriter(path: "/bin/bash", arguments: ["/bin/bash"], environment: ["TERM=ansi"])!
-////		pty.masterFileHandle.writeData("ls -Gbla\n".dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)!)
-////		println(pty.masterFileHandle.availableData.toString())
-//		
-//		sleep(1)
-//		println(pty.masterFileHandle.availableData.toString())
-//		pty.masterFileHandle.writeData("sudo /bin/ls\n".dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)!)		///	`sudo` also works.
-//		
-//		sleep(2)
-//		println(pty.masterFileHandle.availableData.toString())
-//		pty.masterFileHandle.writeData("<type your root password here to test pty>\n".dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)!)
-//		
-//		sleep(1)
-//		println(pty.masterFileHandle.availableData.toString())
-//		pty.masterFileHandle.writeData("exit\n".dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)!)
-//		
-//		println(pty.masterFileHandle.readDataToEndOfFile().toString())
-//		pty.waitUntilChildProcessFinishes()
+		let	pty2	=	PseudoTeletypewriter(path: "/bin/bash", arguments: ["/bin/bash"], environment: ["TERM=ansi"])!
+		pty2.masterFileHandle.write("ls -Gbla\n".data(using: String.Encoding.utf8, allowLossyConversion: false)!)
+		print(pty2.masterFileHandle.availableData.toString())
+		
+		sleep(1)
+		print(pty2.masterFileHandle.availableData.toString())
+		pty2.masterFileHandle.write("sudo /bin/ls\n".data(using: String.Encoding.utf8, allowLossyConversion: false)!)		///	`sudo` also works.
+		
+		sleep(2)
+		print(pty2.masterFileHandle.availableData.toString())
+		pty2.masterFileHandle.write("<type your root password here to test pty>\n".data(using: String.Encoding.utf8, allowLossyConversion: false)!)
+		
+		sleep(1)
+		print(pty2.masterFileHandle.availableData.toString())
+		pty2.masterFileHandle.write("exit\n".data(using: String.Encoding.utf8, allowLossyConversion: false)!)
+		
+		print(pty2.masterFileHandle.readDataToEndOfFile().toString())
+		pty2.waitUntilChildProcessFinishes()
 		
 		NSApplication.shared().terminate(self)
 		
