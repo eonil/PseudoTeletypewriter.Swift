@@ -12,10 +12,10 @@ import Foundation
 
 
 public struct FileDescriptor {
-	public func toFileHandle(closeOnDealloc: Bool) -> NSFileHandle {
-		return	NSFileHandle(fileDescriptor: value, closeOnDealloc: closeOnDealloc)
+	public func toFileHandle(_ closeOnDealloc: Bool) -> FileHandle {
+		return	FileHandle(fileDescriptor: value, closeOnDealloc: closeOnDealloc)
 	}
-	private var	value:Int32
+	fileprivate var	value:Int32
 }
 
 public struct ForkResult {
@@ -42,7 +42,7 @@ public struct ForkResult {
 			return	value
 		}
 	}
-	private var	value:pid_t
+	fileprivate var	value:pid_t
 }
 
 
@@ -66,10 +66,10 @@ public func forkPseudoTeletypewriter() -> (result:ForkResult, master:FileDescrip
 ///	Does not return on success.
 ///	Returns on any error.
 ///	https://developer.apple.com/library/mac/documentation/Darwin/Reference/ManPages/man3/exec.3.html
-public func execute(path:String, _ arguments:[String], _ environment:[String]) {
+public func execute(_ path:String, _ arguments:[String], _ environment:[String]) {
 	path.withCString { (pathP:UnsafePointer<Int8>) -> () in
-		withCPointerToNullTerminatingCArrayOfCStrings(arguments, { (argP:UnsafePointer<UnsafeMutablePointer<Int8>>) -> () in
-			withCPointerToNullTerminatingCArrayOfCStrings(environment, { (envP:UnsafePointer<UnsafeMutablePointer<Int8>>) -> () in
+		withCPointerToNullTerminatingCArrayOfCStrings(arguments, { (argP:UnsafePointer<UnsafeMutablePointer<Int8>?>) -> () in
+			withCPointerToNullTerminatingCArrayOfCStrings(environment, { (envP:UnsafePointer<UnsafeMutablePointer<Int8>?>) -> () in
 				execve(pathP, argP, envP)
 				return
 			})
@@ -101,22 +101,23 @@ public func execute(path:String, _ arguments:[String], _ environment:[String]) {
 
 ///	Generates proper pointer arrays for `exec~` family calls.
 ///	Terminatin `NULL` is required for `exec~` family calls.
-private func withCPointerToNullTerminatingCArrayOfCStrings(strings:[String], _ block:(UnsafePointer<UnsafeMutablePointer<Int8>>)->()) {
-	///	Keep this in memory until the `block` to be finished.
-	let	a	=	strings.map { (s:String) -> NSMutableData in
-		let	b	=	s.cStringUsingEncoding(NSUTF8StringEncoding)!
-		assert(b[b.endIndex-1] == 0)
-		return	NSData.fromCCharArray(b).mutableCopy() as! NSMutableData
-	}
-	
-	let	a1	=	a.map { (d:NSMutableData) -> UnsafeMutablePointer<Int8> in
-		return	UnsafeMutablePointer<Int8>(d.mutableBytes)
-		} + [nil as UnsafeMutablePointer<Int8>]
-	debugLog(a1)
-	
-	a1.withUnsafeBufferPointer { (p:UnsafeBufferPointer<UnsafeMutablePointer<Int8>>) -> () in
-		block(p.baseAddress)
-	}
+private func withCPointerToNullTerminatingCArrayOfCStrings(_ strings:[String], _ block:@escaping (UnsafePointer<UnsafeMutablePointer<Int8>?>)-> Void) {
+    ///	Keep this in memory until the `block` to be finished.
+    let	a: [NSMutableData] =	strings.map { (s:String) -> NSMutableData in
+        let	b = s.cString(using: String.Encoding.utf8)!
+        assert(b[b.endIndex-1] == 0)
+        return (Data.fromCCharArray(b) as NSData).mutableCopy() as! NSMutableData
+    }
+    
+    let	a1: [UnsafeMutablePointer<Int8>?] = a.map { (d:NSMutableData) -> UnsafeMutablePointer<Int8> in
+        let opPtr = OpaquePointer(d.mutableBytes)
+        return	UnsafeMutablePointer<Int8>(opPtr)
+        } + [nil]
+    debugLog(a1)
+    
+    a1.withUnsafeBufferPointer { buffer -> Void in
+        block(buffer.baseAddress!)
+    }
 }
 
 
