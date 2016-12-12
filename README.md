@@ -41,7 +41,7 @@ You can check the ANSI escape color code. It is working as interactive pseudo te
 
 Requirements
 ------------
--	Swift 2.1
+-	Swift 3
 
 
 
