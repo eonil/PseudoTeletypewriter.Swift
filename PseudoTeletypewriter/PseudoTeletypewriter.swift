@@ -9,32 +9,35 @@
 import Foundation
 import BSD
 
-///    Provides simple access to BSD `pty`.
-///    
-///    This spawns a new child process using supplied arguments,
-///    and setup a proper pseudo terminal connected to it.
+/// Provides simple access to BSD `pty`.
+/// 
+/// This spawns a new child process using supplied arguments,
+/// and setup a proper pseudo terminal connected to it.
 ///
-///    The child process will run in interactive mode terminal,
-///    and will emit terminal escape code accordingly if you set
-///    a proper terminal environment variable.
+/// The child process will run in interactive mode terminal,
+/// and will emit terminal escape code accordingly if you set
+/// a proper terminal environment variable.
 ///
-///        TERM=ansi
+///     TERM=ansi
 ///
-///    Here's full recommended example.
+/// Here's full recommended example.
 ///
-///        let    pty    =    PseudoTeletypewriter(path: "/bin/ls", arguments: ["/bin/ls", "-Gbla"], environment: ["TERM=ansi"])!
-///        println(pty.masterFileHandle.readDataToEndOfFile().toString())
-///        pty.waitUntilChildProcessFinishes()
+///     let    pty    =    PseudoTeletypewriter(path: "/bin/ls", arguments: ["/bin/ls", "-Gbla"], environment: ["TERM=ansi"])!
+///     println(pty.masterFileHandle.readDataToEndOfFile().toString())
+///     pty.waitUntilChildProcessFinishes()
 ///
-///    It is recommended to use executable name as the first argument by convention.
+/// It is recommended to use executable name as the first argument by convention.
 ///
-///    The child process will be launched immediately when you 
-///    instantiate this class.
+/// The child process will be launched immediately when you 
+/// instantiate this class.
 ///
-///    This is a sort of `NSTask`-like class and modeled on it.
-///    This does not support setting terminal dimensions.
+/// This is a sort of `NSTask`-like class and modeled on it.
+/// This does not support setting terminal dimensions.
 ///
-open class PseudoTeletypewriter {
+public final class PseudoTeletypewriter {
+    private let _masterFileHandle:FileHandle
+    private let _childProcessID:pid_t
+
     public init?(path:String, arguments:[String], environment:[String]) {
         assert(arguments.count >= 1)
         assert(path.hasSuffix(arguments[0]))
@@ -59,52 +62,22 @@ open class PseudoTeletypewriter {
             return nil
         }
     }
-    deinit {
-        
-    }
-    
-    
-    open var masterFileHandle:FileHandle {
+
+    public var masterFileHandle:FileHandle {
         return _masterFileHandle
     }
     
-    open var childProcessID:pid_t {
+    public var childProcessID:pid_t {
         return _childProcessID
     }
     
-    ///    Waits for child process finishes synchronously.
-    open func waitUntilChildProcessFinishes() {
+    /// Waits for child process finishes synchronously.
+    public func waitUntilChildProcessFinishes() {
         var stat_loc = 0 as Int32
         let childpid1 = waitpid(_childProcessID, &stat_loc, 0)
         debugLog("child process quit: pid = \(childpid1)")
     }
-    
-    
-    
-    
-    
-    
-    ////
-    
-    fileprivate let _masterFileHandle:FileHandle
-    fileprivate let _childProcessID:pid_t
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 private func debugLog<T>(_ v:@autoclosure ()->T) {
     #if DEBUG
