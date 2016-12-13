@@ -34,7 +34,7 @@ import BSD
 ///	This is a sort of `NSTask`-like class and modeled on it.
 ///	This does not support setting terminal dimensions.
 ///
-public class PseudoTeletypewriter {
+open class PseudoTeletypewriter {
 	public init?(path:String, arguments:[String], environment:[String]) {
 		assert(arguments.count >= 1)
 		assert(path.hasSuffix(arguments[0]))
@@ -54,7 +54,7 @@ public class PseudoTeletypewriter {
 			debugLog("`forkpty` failed.")
 			
 			///	Below two lines are useless but inserted to suppress compiler error.
-			_masterFileHandle	=	NSFileHandle()
+			_masterFileHandle	=	FileHandle()
 			_childProcessID		=	0
 			return	nil
 		}
@@ -64,20 +64,20 @@ public class PseudoTeletypewriter {
 	}
 	
 	
-	public var	masterFileHandle:NSFileHandle {
+	open var	masterFileHandle:FileHandle {
 		get {
 			return	_masterFileHandle
 		}
 	}
 	
-	public var	childProcessID:pid_t {
+	open var	childProcessID:pid_t {
 		get {
 			return	_childProcessID
 		}
 	}
 	
 	///	Waits for child process finishes synchronously.
-	public func waitUntilChildProcessFinishes() {
+	open func waitUntilChildProcessFinishes() {
 		var	stat_loc	=	0 as Int32
 		let	childpid1	=	waitpid(_childProcessID, &stat_loc, 0)
 		debugLog("child process quit: pid = \(childpid1)")
@@ -90,8 +90,8 @@ public class PseudoTeletypewriter {
 	
 	////
 	
-	private let	_masterFileHandle:NSFileHandle
-	private let	_childProcessID:pid_t
+	fileprivate let	_masterFileHandle:FileHandle
+	fileprivate let	_childProcessID:pid_t
 }
 
 
@@ -110,7 +110,7 @@ public class PseudoTeletypewriter {
 
 
 
-private func debugLog<T>(@autoclosure v:()->T) {
+private func debugLog<T>(_ v:@autoclosure ()->T) {
 	#if DEBUG
 		println("\(v)")
 	#endif

@@ -8,37 +8,41 @@
 
 import Foundation
 
-extension NSData {
+extension Data {
 	func toUInt8Array() -> [UInt8] {
-		let	p	=	self.bytes
-		let	p1	=	UnsafePointer<UInt8>(p)
+		let	p	=	(self as NSData).bytes
 		
 		var	bs	=	[] as [UInt8]
-		for i in 0..<self.length {
-			bs.append(p1[i])
+		for i in 0..<self.count {
+            let dataPtr = p.advanced(by: i)
+            let datum = dataPtr.load(as: UInt8.self)
+			bs.append(datum)
 		}
 		
 		return	bs
 	}
 	func toString() -> String {
-		return	NSString(data: self, encoding: NSUTF8StringEncoding)! as String
+		return	NSString(data: self, encoding: String.Encoding.utf8.rawValue)! as String
 	}
-	class func fromUInt8Array(bs:[UInt8]) -> NSData {
-		var	r	=	nil as NSData?
+    
+	static func fromUInt8Array(_ bs:[UInt8]) -> Data {
+		var	r = nil as Data?
 		bs.withUnsafeBufferPointer { (p:UnsafeBufferPointer<UInt8>) -> () in
-			let	p1	=	UnsafePointer<Void>(p.baseAddress)
-			r		=	NSData(bytes: p1, length: p.count)
+			let	p1 = UnsafeRawPointer(p.baseAddress)!
+            let opPtr = OpaquePointer(p1)
+			r		=	Data(bytes: UnsafePointer<UInt8>(opPtr), count: p.count)
 		}
 		return	r!
 	}
 	
 	///	Assumes `cCharacters` is C-string.
-	class func fromCCharArray(cCharacters:[CChar]) -> NSData {
-		precondition(cCharacters.count == 0 || cCharacters[cCharacters.endIndex.predecessor()] == 0)
-		var	r	=	nil as NSData?
+	static func fromCCharArray(_ cCharacters:[CChar]) -> Data {
+		precondition(cCharacters.count == 0 || cCharacters[(cCharacters.endIndex - 1)] == 0)
+		var	r	=	nil as Data?
 		cCharacters.withUnsafeBufferPointer { (p:UnsafeBufferPointer<CChar>) -> () in
-			let	p1	=	UnsafePointer<Void>(p.baseAddress)
-			r		=	NSData(bytes: p1, length: p.count)
+			let	p1	=	UnsafeRawPointer(p.baseAddress)!
+            let opPtr = OpaquePointer(p1)
+			r		=	Data(bytes: UnsafePointer<UInt8>(opPtr), count: p.count)
 		}
 		return	r!
 	}
@@ -46,7 +50,7 @@ extension NSData {
 
 
 
-func debugLog<T>(@autoclosure v:()->T) {
+func debugLog<T>(_ v:@autoclosure ()->T) {
 	#if DEBUG
 		println("\(v)")
 	#endif
