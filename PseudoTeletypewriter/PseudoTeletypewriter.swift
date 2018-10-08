@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import BSD
+import EonilBSD
 
 /// Provides simple access to BSD `pty`.
 /// 
@@ -70,7 +70,7 @@ public final class PseudoTeletypewriter {
     public var childProcessID:pid_t {
         return _childProcessID
     }
-    
+
     /// Waits for child process finishes synchronously.
     public func waitUntilChildProcessFinishes() {
         var stat_loc = 0 as Int32

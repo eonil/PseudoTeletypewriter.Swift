@@ -6,6 +6,7 @@
 //  Copyright (c) 2015 Eonil. All rights reserved.
 //
 
+import Darwin
 import Foundation
 
 // BSD functions properly wrapped in more simple and typesafe Swift manner.

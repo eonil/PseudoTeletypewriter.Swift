@@ -13,7 +13,7 @@
 
 pid_t
 Eonil____BSD_C_fork() {
-	return	fork();
+	return fork();
 }
 
 
